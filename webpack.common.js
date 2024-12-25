@@ -74,7 +74,7 @@ module.exports = {
     
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.resolve(__dirname, 'public/index.html'),
+      template: path.resolve(__dirname, 'index.html'),
       minify: {
         collapseWhitespace: true,
         removeComments: true,
@@ -93,7 +93,7 @@ module.exports = {
           globOptions: {
             ignore: [
               '**/index.html',
-              '**/sw.js', // Ignore sw.js as it will be handled by WorkboxWebpackPlugin
+              '**/sw.js', 
             ],
           },
         },

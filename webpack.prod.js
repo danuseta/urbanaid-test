@@ -80,7 +80,7 @@ module.exports = merge(common, {
     }),
     // Menggunakan InjectManifest untuk Service Worker custom
     new WorkboxWebpackPlugin.InjectManifest({
-      swSrc: path.resolve(__dirname, 'public/sw.js'),
+      swSrc: path.resolve(__dirname, 'sw.js'),
       swDest: 'sw.js',
       maximumFileSizeToCacheInBytes: 5000000,
       exclude: [
