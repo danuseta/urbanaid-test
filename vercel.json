@@ -2,7 +2,7 @@
    "version": 2,
    "builds": [
      {
-       "src": "/package.json",
+       "src": "package.json",
        "use": "@vercel/static-build",
        "config": {
          "distDir": "dist"
@@ -23,7 +23,7 @@
        "destination": "/dist/sw.js"
      },
      {
-       "source": "/(.*)\\.(?:js|css|png|jpg|jpeg|gif|ico|json|svg|webp)",
+       "source": "/(.*)\.(js|css|png|jpg|jpeg|gif|ico|json|svg|webp)",
        "destination": "/dist/$1.$2"
      },
      {
