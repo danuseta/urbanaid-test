@@ -30,8 +30,8 @@
        ]
      },
      {
-       "source": "/(.*)\\.(?:js|css|png|jpg|jpeg|gif|ico|json|svg)$",
-       "destination": "client/$1"
+       "source": "/:path*\\.(js|css|png|jpg|jpeg|gif|ico|json|svg)",
+       "destination": "client/:path*"
      },
      {
        "source": "^/$|^/artikel$|^/tentang-kami$|^/register$|^/login$|^/forgot-password$|^/pelaporan(/.*)?$|^/admin(/.*)?$",
