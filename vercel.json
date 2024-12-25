@@ -2,7 +2,7 @@
    "version": 2,
    "builds": [
      {
-       "src": "client/package.json",
+       "src": "/package.json",
        "use": "@vercel/static-build",
        "config": {
          "distDir": "dist"
@@ -16,30 +16,19 @@
    "rewrites": [
      {
        "source": "/api/(.*)",
-       "destination": "server/src/app.js"
+       "destination": "/server/src/app.js"
      },
      {
        "source": "/sw.js",
-       "destination": "client/sw.js",
-       "has": [
-         {
-           "type": "header",
-           "key": "Service-Worker-Allowed",
-           "value": "/"
-         }
-       ]
+       "destination": "/dist/sw.js"
      },
      {
-       "source": "/:path*\\.(js|css|png|jpg|jpeg|gif|ico|json|svg)",
-       "destination": "client/:path*"
+       "source": "/(.*)\\.(?:js|css|png|jpg|jpeg|gif|ico|json|svg|webp)",
+       "destination": "/dist/$1.$2"
      },
      {
-       "source": "^/$|^/artikel$|^/tentang-kami$|^/register$|^/login$|^/forgot-password$|^/pelaporan(/.*)?$|^/admin(/.*)?$",
-       "destination": "client/public/index.html"
-     },
-     {
-       "source": "/(.*)",
-       "destination": "client/public/index.html"
+       "source": "/((?!api).*)",
+       "destination": "/dist/index.html"
      }
    ],
    "headers": [
@@ -53,6 +42,15 @@
          {
            "key": "Service-Worker-Allowed",
            "value": "/"
+         }
+       ]
+     },
+     {
+       "source": "/(.*)",
+       "headers": [
+         {
+           "key": "Cache-Control",
+           "value": "public, max-age=0, must-revalidate"
          }
        ]
      }
