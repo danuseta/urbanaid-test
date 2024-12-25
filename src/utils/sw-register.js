@@ -5,9 +5,9 @@ const swRegister = async () => {
   }
 
   try {
-    const swUrl = `${window.location.origin}/src/sw.js`;
-    const registration = await navigator.serviceWorker.register(swUrl, {
+    const registration = await navigator.serviceWorker.register('/sw.js', {
       scope: '/',
+      type: 'module'
     });
 
     console.log('Service Worker registered successfully:', registration.scope);
@@ -17,9 +17,8 @@ const swRegister = async () => {
 
       newWorker.addEventListener('statechange', () => {
         if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-          // if (window.confirm('New version available! Refresh to update?')) {
-          //   window.location.reload();
-          // }
+          // New content is available and will be used when all tabs for this page are closed.
+          console.log('New content is available and will be used when all tabs for this page are closed.');
         }
       });
     });

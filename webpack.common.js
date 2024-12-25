@@ -2,7 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 
@@ -92,36 +91,26 @@ module.exports = {
           from: path.resolve(__dirname, 'public'),
           to: path.resolve(__dirname, 'dist'),
           globOptions: {
-            ignore: ['**/index.html', '**/index.html.br', '**/index.html.gz'],
+            ignore: [
+              '**/index.html',
+              '**/sw.js', // Ignore sw.js as it will be handled by WorkboxWebpackPlugin
+            ],
           },
         },
       ],
     }),
 
-    // new WorkboxWebpackPlugin.InjectManifest({
-    //   swSrc: '/src/utils/sw.js',
-    //   swDest: 'sw.js',
-    //   mode: 'production',
-    //   maximumFileSizeToCacheInBytes: 5000000,
-    //   exclude: [
-    //     /\.map$/,
-    //     /manifest$/,
-    //     /\.htaccess$/,
-    //     /service-worker\.js$/,
-    //     /sw\.js$/,
-    //   ],
-    // }),
     new BundleAnalyzerPlugin(),
     new ImageminWebpWebpackPlugin({
-        config: [
-          {
-            test: /\.(jpe?g|png)/,
-            options: {
-              quality: 80,
-            },
+      config: [
+        {
+          test: /\.(jpe?g|png)/,
+          options: {
+            quality: 80,
           },
-        ],
-        overrideExtension: true,
-      }),
+        },
+      ],
+      overrideExtension: true,
+    }),
   ],
 };

@@ -11,10 +11,12 @@ const CACHE_NAMES = {
   maps: 'maps-cache-v1'
 };
 
+// Precache all assets listed in the manifest
 precacheAndRoute(self.__WB_MANIFEST);
 
 cleanupOutdatedCaches();
 
+// Handle navigation requests with customized offline fallback
 const navigationHandler = async ({ request }) => {
   const cache = await caches.open(CACHE_NAMES.pages);
 
@@ -42,6 +44,7 @@ const navigationHandler = async ({ request }) => {
     console.log('Cache retrieval failed:', error);
   }
 
+  // Custom offline page
   return new Response(
     `<!DOCTYPE html>
     <html lang="id">
@@ -99,10 +102,12 @@ const navigationHandler = async ({ request }) => {
   );
 };
 
+// Register routes
 registerRoute(
   new NavigationRoute(navigationHandler)
 );
 
+// Cache static assets
 registerRoute(
   ({ request }) =>
     request.destination === 'script' ||
@@ -121,6 +126,7 @@ registerRoute(
   })
 );
 
+// Cache map tiles
 registerRoute(
   ({ url }) => url.hostname.includes('tile.openstreetmap.org'),
   new CacheFirst({
@@ -131,13 +137,14 @@ registerRoute(
       }),
       new ExpirationPlugin({
         maxEntries: 1000,
-        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 hari
+        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
         purgeOnQuotaError: true
       }),
     ],
   })
 );
 
+// Cache Leaflet assets
 registerRoute(
   ({ url }) => url.href.includes('leaflet'),
   new CacheFirst({
@@ -148,12 +155,13 @@ registerRoute(
       }),
       new ExpirationPlugin({
         maxEntries: 10,
-        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 hari
+        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
       }),
     ],
   })
 );
 
+// Cache geocoding requests
 registerRoute(
   ({ url }) => url.hostname.includes('nominatim.openstreetmap.org'),
   new NetworkFirst({
@@ -162,12 +170,13 @@ registerRoute(
       new CacheableResponsePlugin({ statuses: [0, 200] }),
       new ExpirationPlugin({
         maxEntries: 100,
-        maxAgeSeconds: 24 * 60 * 60  // 1 hari
+        maxAgeSeconds: 24 * 60 * 60  // 1 day
       })
     ]
   })
 );
 
+// Cache images
 registerRoute(
   ({ request }) => request.destination === 'image',
   new CacheFirst({
@@ -183,6 +192,22 @@ registerRoute(
   })
 );
 
+// Cache API requests
+registerRoute(
+  ({ url }) => url.origin === 'https://urbanaid-server.up.railway.app',
+  new NetworkFirst({
+    cacheName: 'api-cache',
+    plugins: [
+      new CacheableResponsePlugin({ statuses: [0, 200] }),
+      new ExpirationPlugin({
+        maxEntries: 100,
+        maxAgeSeconds: 72 * 60 * 60 // 72 hours
+      })
+    ]
+  })
+);
+
+// Install event
 self.addEventListener('install', (event) => {
   console.log('[ServiceWorker] Install');
   event.waitUntil(
@@ -198,6 +223,7 @@ self.addEventListener('install', (event) => {
   );
 });
 
+// Activate event
 self.addEventListener('activate', (event) => {
   console.log('[ServiceWorker] Activate');
   event.waitUntil(
@@ -215,8 +241,4 @@ self.addEventListener('activate', (event) => {
       })
     ])
   );
-});
-
-self.addEventListener('fetch', (event) => {
-  console.log('[ServiceWorker] Fetch:', event.request.url);
 });
