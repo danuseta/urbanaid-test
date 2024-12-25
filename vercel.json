@@ -2,32 +2,28 @@
    "version": 2,
    "builds": [
      {
-       "src": "package.json",
+       "src": "/package.json",
        "use": "@vercel/static-build",
        "config": {
          "distDir": "dist"
        }
-     },
-     {
-       "src": "server/src/app.js",
-       "use": "@vercel/node"
      }
    ],
    "rewrites": [
      {
-       "source": "/api/(.*)",
-       "destination": "/server/src/app.js"
+       "source": "/static/(.*)",
+       "destination": "/dist/static/$1"
+     },
+     {
+       "source": "/manifest.json",
+       "destination": "/dist/manifest.json"
      },
      {
        "source": "/sw.js",
        "destination": "/dist/sw.js"
      },
      {
-       "source": "/(.*)\.(js|css|png|jpg|jpeg|gif|ico|json|svg|webp)",
-       "destination": "/dist/$1.$2"
-     },
-     {
-       "source": "/((?!api).*)",
+       "source": "/(.*)",
        "destination": "/dist/index.html"
      }
    ],
@@ -42,15 +38,6 @@
          {
            "key": "Service-Worker-Allowed",
            "value": "/"
-         }
-       ]
-     },
-     {
-       "source": "/(.*)",
-       "headers": [
-         {
-           "key": "Cache-Control",
-           "value": "public, max-age=0, must-revalidate"
          }
        ]
      }
