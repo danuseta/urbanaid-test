@@ -11,20 +11,8 @@
    ],
    "rewrites": [
      {
-       "source": "/(css|js|images|icons)/(.*)",
-       "destination": "/dist/$1/$2"
-     },
-     {
-       "source": "/manifest.json",
-       "destination": "/dist/manifest.json"
-     },
-     {
-       "source": "/sw.js",
-       "destination": "/dist/sw.js"
-     },
-     {
        "source": "/(.*)",
-       "destination": "/dist/index.html"
+       "destination": "/"
      }
    ],
    "headers": [
@@ -38,6 +26,24 @@
          {
            "key": "Service-Worker-Allowed",
            "value": "/"
+         }
+       ]
+     },
+     {
+       "source": "/manifest.json",
+       "headers": [
+         {
+           "key": "Cache-Control",
+           "value": "public, max-age=0, must-revalidate"
+         }
+       ]
+     },
+     {
+       "source": "/(.*)\\.(?:js|css|ico|png|jpg|jpeg|gif|svg|webp)$",
+       "headers": [
+         {
+           "key": "Cache-Control",
+           "value": "public, max-age=31536000, immutable"
          }
        ]
      }
