@@ -20,11 +20,14 @@
      },
      {
        "source": "/sw.js",
-       "headers": {
-         "cache-control": "public, max-age=0, must-revalidate",
-         "Service-Worker-Allowed": "/"
-       },
-       "destination": "client/sw.js"
+       "destination": "client/sw.js",
+       "has": [
+         {
+           "type": "header",
+           "key": "Service-Worker-Allowed",
+           "value": "/"
+         }
+       ]
      },
      {
        "source": "/(.*)\\.(?:js|css|png|jpg|jpeg|gif|ico|json|svg)$",
@@ -33,7 +36,25 @@
      {
        "source": "^/$|^/artikel$|^/tentang-kami$|^/register$|^/login$|^/forgot-password$|^/pelaporan(/.*)?$|^/admin(/.*)?$",
        "destination": "client/public/index.html"
+     },
+     {
+       "source": "/(.*)",
+       "destination": "client/public/index.html"
+     }
+   ],
+   "headers": [
+     {
+       "source": "/sw.js",
+       "headers": [
+         {
+           "key": "Cache-Control",
+           "value": "public, max-age=0, must-revalidate"
+         },
+         {
+           "key": "Service-Worker-Allowed",
+           "value": "/"
+         }
+       ]
      }
    ]
  }
- 
