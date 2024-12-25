@@ -1,0 +1,514 @@
+/* Base styles and mobile first approach */
+.pelaporan-container {
+    width: 100%;
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+
+.form-control {
+    width: 100%;
+}
+
+.file-upload-container {
+    border: 2px dashed #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.file-upload-container.drag-over {
+    border-color: #00899B;
+    background-color: rgba(0, 137, 155, 0.05);
+}
+
+.file-preview {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #f7fafc;
+    border-radius: 0.5rem;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.file-thumbnail {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+}
+
+.file-name {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.file-size {
+    color: #718096;
+    font-size: 0.875rem;
+}
+
+.remove-file {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s;
+}
+
+.remove-file:hover {
+    background-color: #fed7d7;
+}
+
+.remove-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+    padding: 0 1rem;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.header p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Navigation Pills - Mobile First */
+.nav-pills {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+.nav-pill {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    background: #F6F6F6;
+    color: #002F35;
+    text-align: center;
+}
+
+.nav-pill.active {
+    background: linear-gradient(90deg, #00899B 0%, #002F35 100%);
+    color: white;
+}
+
+/* Form Card - Mobile First */
+.form-card {
+    background: #F6F6F6;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.form-card h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #002F35;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Form Groups - Mobile First */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #002F35;
+    font-size: 0.875rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #E5E5E5;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #00899B;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Form Row - Mobile First */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 1.5rem;  
+    margin-bottom: 1rem;
+}
+
+/* Infrastructure Info - Mobile First */
+.infra-select-group {
+    position: relative;
+}
+
+.info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #00899B 0%, #002F35 100%);
+    color: white;
+    font-size: 10px;
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
+
+.infra-info {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 0.75rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.hidden {
+    display: none;
+}
+
+/* File Upload - Mobile First */
+.file-upload-container {
+    border: 2px dashed #00899B;
+    border-radius: 8px;
+    padding: 1.25rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.file-upload-container.drag-over {
+    background: rgba(0, 137, 155, 0.1);
+    border-color: #002F35;
+}
+
+.upload-icon-container {
+    margin-bottom: 0.75rem;
+}
+
+.upload-icon {
+    font-size: 2rem;
+    color: #00899B;
+}
+
+.upload-text {
+    margin-bottom: 0.75rem;
+}
+
+.upload-title {
+    font-weight: 600;
+    color: #002F35;
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.browse-button {
+    color: #00899B;
+    font-weight: 600;
+    text-decoration: underline;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.upload-hint {
+    font-size: 0.75rem;
+    color: #666;
+}
+
+/* File Preview - Mobile First */
+.file-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 8px;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.file-thumbnail {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.file-details {
+    flex: 1;
+}
+
+.file-name {
+    font-weight: 600;
+    color: #002F35;
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.file-size {
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.remove-file {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+.remove-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Submit Button - Mobile First */
+.form-submit {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+/* .submit-button {
+    width: 100%;
+    background: linear-gradient(90deg, #00899B 0%, #002F35 100%);
+    color: white;
+    font-weight: 600;
+    padding: 0.875rem 1.5rem;
+    border-radius: 17px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+}
+
+.submit-button:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+} */
+
+/* Date Input Styles */
+input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #ffffff;
+    border: 2px solid #E5E5E5;
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    color: #002F35;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    padding: 0.2rem;
+    filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(155deg) brightness(95%) contrast(80%);
+}
+
+/* Invalid date styling */
+input[type="date"]:invalid {
+    border-color: #dc3545;
+}
+
+input[type="date"]:invalid:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Focus state */
+input[type="date"]:focus {
+    outline: none;
+    border-color: #00899B;
+    box-shadow: 0 0 0 0.2rem rgba(0, 137, 155, 0.25);
+}
+
+/* Disabled future dates */
+input[type="date"]::-webkit-datetime-edit-day-field:disabled,
+input[type="date"]::-webkit-datetime-edit-month-field:disabled,
+input[type="date"]::-webkit-datetime-edit-year-field:disabled {
+    color: #6c757d;
+    background-color: #e9ecef;
+}
+
+.swal2-popup {
+    font-family: 'Inter', sans-serif !important;
+    border-radius: 12px !important;
+}
+
+.swal2-title {
+    color: #002F35 !important;
+    font-weight: 600 !important;
+}
+
+.swal2-html-container {
+    color: #666 !important;
+}
+
+.swal2-confirm {
+    background: linear-gradient(90deg, #00899B 0%, #002F35 100%) !important;
+    border-radius: 17px !important;
+    padding: 12px 24px !important;
+    font-weight: 600 !important;
+}
+
+.swal2-confirm:focus {
+    box-shadow: 0 0 0 3px rgba(0, 137, 155, 0.25) !important;
+}
+
+/* Loading spinner color */
+.swal2-spinner {
+    border-color: #00899B !important;
+    border-right-color: transparent !important;
+}
+
+@media (max-width: 640px) {
+    input[type="date"] {
+        font-size: 0.875rem;
+        padding: 0.625rem;
+    }
+}
+
+/* Tablet Breakpoint */
+@media (min-width: 640px) {
+    .nav-pills {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+    }
+
+    .nav-pill {
+        width: auto;
+        padding: 0.75rem 1.5rem;
+    }
+
+    .form-row {
+        flex-direction: row;
+    }
+
+    .form-row > * {
+        flex: 1;
+    }
+
+    .submit-button {
+        width: auto;
+        min-width: 200px;
+    }
+
+    .file-preview {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+/* Desktop Breakpoint */
+@media (min-width: 1024px) {
+    .pelaporan-container {
+        max-width: 1200px;
+        padding: 2rem;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .header p {
+        font-size: 1.2rem;
+    }
+
+    .form-card {
+        padding: 2rem;
+        max-width: 800px;
+    }
+
+    .form-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-group label {
+        font-size: 1rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        font-size: 1rem;
+        padding: 0.875rem;
+    }
+
+    .file-upload-container {
+        padding: 2rem;
+    }
+
+    .upload-icon {
+        font-size: 2.5rem;
+    }
+
+    .upload-title,
+    .browse-button {
+        font-size: 1rem;
+    }
+
+    .submit-button {
+        font-size: 1rem;
+        padding: 1rem 2rem;
+    }
+}

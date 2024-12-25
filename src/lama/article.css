@@ -1,0 +1,99 @@
+/* Article Hero Section */
+.article-hero img {
+    transition: transform 0.3s ease;
+}
+
+.article-hero:hover img {
+    transform: scale(1.05);
+}
+
+/* Article Content */
+.article-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Principle Cards */
+.principle-card {
+    background: #F6F6F6;
+    border-radius: 12px;
+    padding: 1.5rem;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.principle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.principle-card p {
+    opacity: 0.7; 
+}
+
+/* Category Section & Cards */
+.category-section {
+    background: linear-gradient(90deg, #00899B 0%, #002F35 100%);
+}
+
+.category-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    height: 100%;
+    color: white; 
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Participation Section */
+.participation-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+}
+
+.participation-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.participation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.check-icon {
+    color: #00899B;
+    font-size: 1.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .principle-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .article-hero img {
+        height: 200px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .principle-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .article-hero img {
+        height: 400px;
+    }
+}
