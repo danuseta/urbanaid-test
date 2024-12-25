@@ -13,39 +13,27 @@
        "use": "@vercel/node"
      }
    ],
-   "routes": [
-     {
-       "src": "/api/(.*)",
-       "dest": "server/src/app.js"
-     },
-     {
-       "src": "/sw.js",
-       "headers": {
-         "cache-control": "public, max-age=0, must-revalidate",
-         "Service-Worker-Allowed": "/"
-       },
-       "dest": "client/sw.js"
-     },
-     {
-       "handle": "filesystem"
-     },
-     {
-       "src": "/(.*)\\.(?:js|css|png|jpg|jpeg|gif|ico|json|svg)$",
-       "dest": "client/$1"
-     },
-     {
-       "src": "^/$|^/artikel$|^/tentang-kami$|^/register$|^/login$|^/forgot-password$|^/pelaporan(/.*)?$|^/admin(/.*)?$",
-       "dest": "client/public/index.html"
-     }
-   ],
    "rewrites": [
      {
        "source": "/api/(.*)",
        "destination": "server/src/app.js"
      },
      {
-       "source": "/(.*)",
+       "source": "/sw.js",
+       "headers": {
+         "cache-control": "public, max-age=0, must-revalidate",
+         "Service-Worker-Allowed": "/"
+       },
+       "destination": "client/sw.js"
+     },
+     {
+       "source": "/(.*)\\.(?:js|css|png|jpg|jpeg|gif|ico|json|svg)$",
+       "destination": "client/$1"
+     },
+     {
+       "source": "^/$|^/artikel$|^/tentang-kami$|^/register$|^/login$|^/forgot-password$|^/pelaporan(/.*)?$|^/admin(/.*)?$",
        "destination": "client/public/index.html"
      }
    ]
  }
+ 
