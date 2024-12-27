@@ -288,14 +288,14 @@ const HomePage = {
                                 Dengan UrbanAid, Anda memiliki kekuatan untuk melaporkan kerusakan infrastruktur secara langsung, dan membantu menciptakan lingkungan yang lebih aman dan nyaman bagi semua orang.
                             </p>
                             ${!isLoggedIn ? `
-                                <div class="flex flex-row justify-center md:justify-start space-x-4" data-aos="fade-up" data-aos-delay="200">
-                                    <button onclick="window.location.href='/login'" class="gradient-border-button px-4 sm:px-6 py-2 text-sm sm:text-base">
-                                        Masuk
-                                    </button>
-                                    <button onclick="window.location.href='/register'" class="gradient-button text-white px-4 sm:px-6 py-2 text-sm sm:text-base">
-                                        Daftar
-                                    </button>
-                                </div>
+<div class="flex flex-row justify-center md:justify-start space-x-4" data-aos="fade-up" data-aos-delay="200">
+    <a href="/login" class="gradient-border-button px-4 sm:px-6 py-2 text-sm sm:text-base">
+        Masuk
+    </a>
+    <a href="/register" class="gradient-button text-white px-4 sm:px-6 py-2 text-sm sm:text-base">
+        Daftar
+    </a>
+</div>
                             ` : ''}
                         </div>
                     </div>
