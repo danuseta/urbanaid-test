@@ -1,26 +1,23 @@
 {
-   "version": 2,
-   "builds": [
-     {
-       "src": "package.json",
-       "use": "@vercel/static-build",
-       "config": {
-         "distDir": "dist"
-       }
-     }
-   ],
-   "rewrites": [
-     {
-       "source": "/manifest.json",
-       "destination": "/dist/manifest.json"
-     },
-     {
-       "source": "/sw.js",
-       "destination": "/dist/sw.js"
-     },
-     {
-       "source": "/(.*)",
-       "destination": "/dist/index.html"
-     }
-   ]
- }
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static-build"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/manifest.json",
+      "destination": "/manifest.json"
+    },
+    {
+      "source": "/sw.js",
+      "destination": "/sw.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
